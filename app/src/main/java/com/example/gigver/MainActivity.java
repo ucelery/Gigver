@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
+import models.Post;
 import models.User;
 import utils.ServerEvent;
 import utils.ServerManager;
@@ -25,6 +26,21 @@ public class MainActivity extends AppCompatActivity {
             public void OnComplete(List<User> result) {
                 for (User user : result) {
                     System.out.println("Hello User, " + user.GetName());
+                }
+            }
+
+            @Override
+            public void OnFailure(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
+
+        // Gets Posts
+        server.GetPosts(new ServerEvent<List<Post>>() {
+            @Override
+            public void OnComplete(List<Post> result) {
+                for (Post post : result) {
+                    System.out.println("Theres a post about: " + post.GetSubject());
                 }
             }
 

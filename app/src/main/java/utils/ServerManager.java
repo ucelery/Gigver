@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import models.Post;
 import models.User;
 
 public class ServerManager {
@@ -52,6 +53,43 @@ public class ServerManager {
 
 
                     callback.OnComplete(users);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    callback.OnFailure("Failed");
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
+    }
+
+    public void GetPosts(ServerEvent<List<Post>> callback) {
+        String apiUrl = ServerManager.this.hostURL + "/posts/get";
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<Post> posts = new ArrayList<Post>();
+
+                try {
+                    StringBuffer response = FetchData(apiUrl);
+
+                    JSONArray postsArrayString = new JSONArray(response.toString());
+                    for (int i = 0; i < postsArrayString.length(); i++) {
+                        JSONObject postObject = postsArrayString.getJSONObject(i);
+                        Post newPost = new Post(
+                                postObject.getString("_id"),
+                                postObject.getString("poster_id"),
+                                postObject.getString("subject"),
+                                postObject.getString("description"),
+                                postObject.getString("rewards")
+                        );
+
+                        posts.add(newPost);
+                    }
+
+
+                    callback.OnComplete(posts);
                 } catch (IOException e) {
                     e.printStackTrace();
                     callback.OnFailure("Failed");
