@@ -49,5 +49,37 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(errorMessage);
             }
         });
+
+        // Add User
+        User newUser = new User("Jhob", "jabalos@mymail.mapua.edu.ph", "Some Random Password", "123 Ordinary St. Madeup City", "09394567777", "02 87000");
+
+        server.AddUser(newUser,
+                new ServerEvent<User>() {
+            @Override
+            public void OnComplete(User result) {
+                System.out.println("Newly Added User: " + result.GetID());
+            }
+
+            @Override
+            public void OnFailure(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
+
+        // Add Post
+        Post newPost = new Post("662604696f7ea20e4cd6b23e", "Delivery Nearby", "Some stuff needed to be delivered by foot", "Monetary");
+
+        server.AddPost(newPost,
+                new ServerEvent<Post>() {
+                    @Override
+                    public void OnComplete(Post result) {
+                        System.out.println("Newly Added Post: " + result.GetID());
+                    }
+
+                    @Override
+                    public void OnFailure(String errorMessage) {
+                        System.out.println(errorMessage);
+                    }
+        });
     }
 }
