@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Post;
+import models.Rating;
 import models.User;
 
 public class ServerManager {
@@ -22,7 +23,7 @@ public class ServerManager {
         this.hostURL = hostURL;
     }
 
-    public void GetUsers(ServerEvent<List<User>> callback) {
+    public void GetUsers(IServerEvent<List<User>> callback) {
         String apiUrl = ServerManager.this.hostURL + "/users/get";
 
         new Thread(new Runnable() {
@@ -62,7 +63,7 @@ public class ServerManager {
         }).start();
     }
 
-    public void AddUser(User newUser, ServerEvent<User> callback) {
+    public void AddUser(User newUser, IServerEvent<User> callback) {
         String apiUrl = ServerManager.this.hostURL + "/users/add";
 
         new Thread(new Runnable() {
@@ -85,7 +86,27 @@ public class ServerManager {
         }).start();
     }
 
-    public void GetPosts(ServerEvent<List<Post>> callback) {
+    public void AddRating(Rating newRate, IServerEvent<Rating> callback) {
+        String apiUrl = ServerManager.this.hostURL + "/users/rating/add";
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    StringBuffer response = PostData(apiUrl, newRate);
+
+                    Rating ratingFromDB = new Rating(new JSONObject(response.toString()));
+
+                    callback.OnComplete(ratingFromDB);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    callback.OnFailure("Failed to Add Rating: " + e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    public void GetPosts(IServerEvent<List<Post>> callback) {
         String apiUrl = ServerManager.this.hostURL + "/posts/get";
 
         new Thread(new Runnable() {
@@ -122,7 +143,7 @@ public class ServerManager {
         }).start();
     }
 
-    public void AddPost(Post newPost, ServerEvent<Post> callback) {
+    public void AddPost(Post newPost, IServerEvent<Post> callback) {
         String apiUrl = ServerManager.this.hostURL + "/posts/add";
 
         new Thread(new Runnable() {
