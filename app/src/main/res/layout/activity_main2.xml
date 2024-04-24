@@ -69,8 +69,28 @@
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="290dp" />
 
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="278dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="299dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/passwordEditText"
         android:layout_width="278dp"
         android:layout_height="43dp"
         android:layout_marginTop="15dp"
@@ -79,9 +99,9 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Password"
         android:textColor="@color/white"
         android:textSize="16dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
@@ -92,10 +112,10 @@
         android:layout_width="24dp"
         android:layout_height="25dp"
         android:layout_marginStart="48dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editPassword"
+        app:layout_constraintEnd_toStartOf="@+id/passwordTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/password" />
 
