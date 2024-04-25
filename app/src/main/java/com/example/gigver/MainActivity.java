@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         /* Temporary Intent on Submit Button
         Subject to change when backend is connected */
         Button submitButton =(Button)findViewById(R.id.submitButton);
-
-        //Intent for Create Account and Continue as Guest
-        TextView create = (TextView) findViewById(R.id.createAccount);
-        TextView guest = (TextView) findViewById(R.id.continueGuest);
         submitButton.setOnClickListener(new View.OnClickListener() { //Temporary
             @Override
             public void onClick(View v) {
@@ -39,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Intent for Create Account and Continue as Guest
+        TextView create = (TextView) findViewById(R.id.createAccount);
+        TextView guest = (TextView) findViewById(R.id.continueGuest);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
