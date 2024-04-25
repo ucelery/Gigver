@@ -60,7 +60,8 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textSize="16dp"
-        android:text="Email"
+        android:hint="Email"
+        android:textColorHint="#85FFFFFF"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,26 +69,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="290dp" />
-
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="278dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="299dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="10dp"
-        android:text="Password"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -100,8 +81,9 @@
         android:ems="10"
         android:inputType="textPassword"
         android:textColor="@color/white"
+        android:hint="Password"
+        android:textColorHint="#85FFFFFF"
         android:textSize="16dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
@@ -115,7 +97,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/passwordTextView"
+        app:layout_constraintEnd_toStartOf="@+id/passwordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/password" />
 
