@@ -25,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //Added a temporary Intent object so that it can run the 2nd page (Profile Page)
-        //Subject to change
+        /* Temporary Intent on Submit Button
+        Subject to change when backend is connected */
         Button submitButton =(Button)findViewById(R.id.submitButton);
+
+        //Intent for Create Account and Continue as Guest
         TextView create = (TextView) findViewById(R.id.createAccount);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        TextView guest = (TextView) findViewById(R.id.continueGuest);
+        submitButton.setOnClickListener(new View.OnClickListener() { //Temporary
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
@@ -40,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),CreateAccount.class);
+                startActivity(intent);
+            }
+        });
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
                 startActivity(intent);
             }
         });
