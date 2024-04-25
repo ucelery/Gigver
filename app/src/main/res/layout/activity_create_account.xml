@@ -25,112 +25,157 @@
         android:id="@+id/imageView5"
         android:layout_width="29dp"
         android:layout_height="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="340dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/createEmail"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/emailAddTextInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/email" />
 
-    <EditText
-        android:id="@+id/createEmail"
-        android:layout_width="278dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="328dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameAddTextInputLayout"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Username"
+        android:textColorHint="#85FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textviewCreate">
+
+        <EditText
+            android:id="@+id/addUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="290dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddTextInputLayout"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Email"
+        android:textColorHint="#85FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameAddTextInputLayout">
+
+        <EditText
+            android:id="@+id/addEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="93dp"
+            tools:layout_editor_absoluteY="499dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/userimageicon"
         android:layout_width="33dp"
         android:layout_height="28dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="390dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/createEmail"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toStartOf="@+id/usernameAddTextInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/createuser" />
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="278dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="384dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Username"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordAddTextInputLayout"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Password"
+        android:textColorHint="#85FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/emailAddTextInputLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
 
-    <EditText
-        android:id="@+id/createPassword"
-        android:layout_width="278dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="260dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/addPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="24dp"
         android:layout_height="25dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="265dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/createPassword"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/confirmimageView"
+        app:layout_constraintEnd_toStartOf="@+id/passwordAddTextInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/password" />
 
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="278dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="196dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordConfirmTextInputLayout"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:hint="Confirm Password"
+        android:textColorHint="#85FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordAddTextInputLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/confirmimageView"
         android:layout_width="24dp"
         android:layout_height="25dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="205dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="210dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/confirmPassword"
+        app:layout_constraintEnd_toStartOf="@+id/passwordConfirmTextInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/password" />
 
