@@ -4,8 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -21,33 +30,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        ServerManager server = new ServerManager("https://gigver-server.onrender.com");
-
-        server.GetUsers(new IServerEvent<List<User>>() {
-            @Override
-            public void OnComplete(List<User> result) {
-                for (User user : result) {
-                    if (user.GetEmail().equals("jebautista@mymail.mapua.edu.ph") && user.GetPassword().equals(""))
-                    System.out.println("Username: " + user.GetID());
-                    System.out.println("Email: " + user.GetEmail());
-                    System.out.println("Password: " + user.GetPassword());
-                }
-            }
-
-            @Override
-            public void OnFailure(String errorMessage) {
-
-            }
-        });
-
-        //Added a temporary Intent object so that it can run the 2nd page (Profile Page)
-        //Subject to change
+        /* Temporary Intent on Submit Button
+        Subject to change when backend is connected */
         Button submitButton =(Button)findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() { //Temporary
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
+            }
+        });
+
+        Animation emailInput = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom);
+        TextInputLayout email = (TextInputLayout) findViewById(R.id.emailTextInputLayout);
+        ImageView iconEmail = (ImageView) findViewById(R.id.imageView5);
+        email.startAnimation(emailInput);
+        iconEmail.startAnimation(emailInput);
+
+        Animation passwordInput = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_emaillayout);
+        TextInputLayout password = (TextInputLayout) findViewById(R.id.passwordTextInputLayout);
+        ImageView passwordIcon = (ImageView) findViewById(R.id.imageView);
+        password.startAnimation(passwordInput);
+        passwordIcon.startAnimation(passwordInput);
+
+        //Intent for Create Account and Continue as Guest
+        TextView create = (TextView) findViewById(R.id.createAccount);
+        TextView guest = (TextView) findViewById(R.id.continueGuest);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CreateAccount.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
+            }
+        });
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }
         });
     }

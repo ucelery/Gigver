@@ -5,18 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfilePage extends AppCompatActivity {
+public class CreatePost extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_page);
-        //Intents for selecting Home page and Post page
+        setContentView(R.layout.activity_create_post);
+        //Intents for selecting Home page and Profile page
         ImageView selectHome = (ImageView) findViewById(R.id.unselectedhomeButton);
-        ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
+        ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
 
         selectHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,10 +25,10 @@ public class ProfilePage extends AppCompatActivity {
                 overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
-        selectPost.setOnClickListener(new View.OnClickListener() {
+        selectMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CreatePost.class);
+                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
