@@ -18,10 +18,6 @@ public class HomeFeed extends AppCompatActivity {
         //Intents for selecting Post page and Profile Page
         ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
         ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
-
-        Animation slideImage = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_passwordadd);
-        ImageView imageSlider = (ImageView) findViewById(R.id.imageView8);
-        imageSlider.startAnimation(slideImage);
         selectPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
