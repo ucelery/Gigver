@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.w3c.dom.Text;
-
 public class CreateAccount extends AppCompatActivity {
 
     @Override
@@ -20,6 +18,10 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         Animation slide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom);
+        Animation emailSlide = AnimationUtils.loadAnimation(this, R.anim.slide_from_bottom_emaillayout);
+        Animation passwordAddSlide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_passwordadd);
+        Animation passwordConfirmSlide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_confirmpass);
+        Animation createSlide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_createbutton);
 
         TextView textView = (TextView) findViewById(R.id.textviewCreate);
         textView.startAnimation(slide);
@@ -31,20 +33,20 @@ public class CreateAccount extends AppCompatActivity {
 
         TextInputLayout emailAddInput = (TextInputLayout) findViewById(R.id.emailAddTextInputLayout);
         ImageView emailIcon = (ImageView) findViewById(R.id.imageView5);
-        emailAddInput.startAnimation(slide);
-        emailIcon.startAnimation(slide);
+        emailAddInput.startAnimation(emailSlide);
+        emailIcon.startAnimation(emailSlide);
 
         TextInputLayout passwordAddInput = (TextInputLayout) findViewById(R.id.passwordAddTextInputLayout);
         ImageView passwordAddIcon = (ImageView) findViewById(R.id.imageView);
-        passwordAddInput.startAnimation(slide);
-        passwordAddIcon.startAnimation(slide);
+        passwordAddInput.startAnimation(passwordAddSlide);
+        passwordAddIcon.startAnimation(passwordAddSlide);
 
         TextInputLayout confirmPasswordInput = (TextInputLayout) findViewById(R.id.passwordConfirmTextInputLayout);
         ImageView passwordConfirmIcon = (ImageView) findViewById(R.id.confirmimageView);
-        confirmPasswordInput.startAnimation(slide);
-        passwordConfirmIcon.startAnimation(slide);
+        confirmPasswordInput.startAnimation(passwordConfirmSlide);
+        passwordConfirmIcon.startAnimation(passwordConfirmSlide);
 
         Button createButton = (Button) findViewById(R.id.submitButton);
-        createButton.startAnimation(slide);
+        createButton.startAnimation(createSlide);
     }
 }
