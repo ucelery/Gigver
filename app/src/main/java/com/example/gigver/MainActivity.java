@@ -7,9 +7,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -36,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }
         });
+
+        Animation emailInput = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom);
+        TextInputLayout email = (TextInputLayout) findViewById(R.id.emailTextInputLayout);
+        ImageView iconEmail = (ImageView) findViewById(R.id.imageView5);
+        email.startAnimation(emailInput);
+        iconEmail.startAnimation(emailInput);
+
+        Animation passwordInput = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_emaillayout);
+        TextInputLayout password = (TextInputLayout) findViewById(R.id.passwordTextInputLayout);
+        ImageView passwordIcon = (ImageView) findViewById(R.id.imageView);
+        password.startAnimation(passwordInput);
+        passwordIcon.startAnimation(passwordInput);
 
         //Intent for Create Account and Continue as Guest
         TextView create = (TextView) findViewById(R.id.createAccount);
