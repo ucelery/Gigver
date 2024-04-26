@@ -23,6 +23,7 @@ public class ProfilePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
         selectPost.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +31,7 @@ public class ProfilePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CreatePost.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
     }

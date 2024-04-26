@@ -3,6 +3,8 @@ package com.example.gigver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +19,15 @@ public class HomeFeed extends AppCompatActivity {
         ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
         ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
 
+        Animation slideImage = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_passwordadd);
+        ImageView imageSlider = (ImageView) findViewById(R.id.imageView8);
+        imageSlider.startAnimation(slideImage);
         selectPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),CreatePost.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
         selectMe.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +35,7 @@ public class HomeFeed extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
     }

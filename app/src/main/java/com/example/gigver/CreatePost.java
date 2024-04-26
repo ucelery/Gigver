@@ -22,6 +22,7 @@ public class CreatePost extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
         selectMe.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +30,7 @@ public class CreatePost extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
             }
         });
     }
