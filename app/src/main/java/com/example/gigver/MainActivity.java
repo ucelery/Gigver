@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }
         });
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),CreateAccount.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }
         });
         guest.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }
         });
     }
