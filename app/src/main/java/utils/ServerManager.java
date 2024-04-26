@@ -42,7 +42,7 @@ public class ServerManager {
                                 userObject.getString("_id"),
                                 userObject.getString("name"),
                                 contactInfo.getString("email"),
-                                "Hidden Password",
+                                userObject.getString("password"),
                                 userObject.getString("address"),
                                 contactInfo.getString("mobile"),
                                 contactInfo.getString("telephone")

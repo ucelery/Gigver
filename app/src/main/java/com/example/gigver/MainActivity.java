@@ -21,6 +21,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        ServerManager server = new ServerManager("https://gigver-server.onrender.com");
+
+        server.GetUsers(new IServerEvent<List<User>>() {
+            @Override
+            public void OnComplete(List<User> result) {
+                for (User user : result) {
+                    if (user.GetEmail().equals("jebautista@mymail.mapua.edu.ph") && user.GetPassword().equals(""))
+                    System.out.println("Username: " + user.GetID());
+                    System.out.println("Email: " + user.GetEmail());
+                    System.out.println("Password: " + user.GetPassword());
+                }
+            }
+
+            @Override
+            public void OnFailure(String errorMessage) {
+
+            }
+        });
+
         //Added a temporary Intent object so that it can run the 2nd page (Profile Page)
         //Subject to change
         Button submitButton =(Button)findViewById(R.id.submitButton);
