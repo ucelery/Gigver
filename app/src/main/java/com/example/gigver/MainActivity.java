@@ -46,11 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 server.GetUsers(new IServerEvent<List<User>>() {
                     @Override
                     public void OnComplete(List<User> result) {
-                        if (result == null) {
-                            // Handle the case where the result is null, perhaps by showing an error message
-                            Toast.makeText(MainActivity.this, "No users found", Toast.LENGTH_SHORT).show();
-                            return; // Exit the method early to avoid a NullPointerException
-                        }
                         boolean userExists = false;
                         for(User user : result){
                             if(user.GetEmail().equals(emailString) && user.GetPassword().equals(passwordString)){
