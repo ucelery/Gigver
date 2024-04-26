@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
@@ -30,15 +32,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        /* Temporary Intent on Submit Button
-        Subject to change when backend is connected */
+        ServerManager server = new ServerManager("https://gigver-server.onrender.com");
+
+        //Login Button main function
         Button submitButton =(Button)findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener() { //Temporary
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
+                EditText emailEditText = findViewById(R.id.editEmail);
+                EditText passwordEditText = findViewById(R.id.passwordEditText);
+                String emailString = emailEditText.getText().toString();
+                String passwordString = passwordEditText.getText().toString();
+                server.GetUsers(new IServerEvent<List<User>>() {
+                    @Override
+                    public void OnComplete(List<User> result) {
+                        if (result == null) {
+                            // Handle the case where the result is null, perhaps by showing an error message
+                            Toast.makeText(MainActivity.this, "No users found", Toast.LENGTH_SHORT).show();
+                            return; // Exit the method early to avoid a NullPointerException
+                        }
+                        boolean userExists = false;
+                        for(User user : result){
+                            if(user.GetEmail().equals(emailString) && user.GetPassword().equals(passwordString)){
+                                userExists = true;
+                                break;
+                            }
+                        }
+                        if(userExists){
+                            Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
+                        }
+                        else {
+                            // No user found with provided email and password, display error message
+                            Snackbar.make(findViewById(android.R.id.content), "Invalid email or password", Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void OnFailure(String errorMessage) {
+                    }
+                });
             }
         });
 
