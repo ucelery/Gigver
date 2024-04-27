@@ -83,7 +83,6 @@ public class CreateAccount extends AppCompatActivity {
                      intent.putExtra("uName",uName);
                      intent.putExtra("eAdd",eAdd);
                      intent.putExtra("pAdd",pAdd);
-                     intent.putExtra("pConf",pConf);
                     startActivity(intent);
                     overridePendingTransition(R.anim.static_animation, R.anim.static_animation);
                 } else {
