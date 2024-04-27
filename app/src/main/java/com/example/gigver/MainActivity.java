@@ -27,6 +27,8 @@ import utils.ServerManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    String eMail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Login Button main function
         Button submitButton =(Button)findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() { //Temporary
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText emailEditText = findViewById(R.id.editEmail);
                 EditText passwordEditText = findViewById(R.id.passwordEditText);
                 String emailString = emailEditText.getText().toString();
                 String passwordString = passwordEditText.getText().toString();
+                eMail = emailEditText.getText().toString();
                 server.GetUsers(new IServerEvent<List<User>>() {
                     @Override
                     public void OnComplete(List<User> result) {
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(userExists){
                             Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
+                            intent.putExtra("email",eMail);
                             startActivity(intent);
                             overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
                         }
@@ -96,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
+                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                intent.putExtra("email", (String) null);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
             }

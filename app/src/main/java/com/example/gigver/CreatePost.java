@@ -16,22 +16,45 @@ public class CreatePost extends AppCompatActivity {
         //Intents for selecting Home page and Profile page
         ImageView selectHome = (ImageView) findViewById(R.id.unselectedhomeButton);
         ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
-
-        selectHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-            }
-        });
-        selectMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-            }
-        });
+        String email = getIntent().getExtras().getString("email");
+        if(email == null){
+            selectHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(),HomeFeed.class);
+                    intent.putExtra("email",(String) null);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                }
+            });
+            selectMe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                    intent.putExtra("email",(String) null);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                }
+            });
+        }else{
+            selectHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
+                    intent.putExtra("email",email);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                }
+            });
+            selectMe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                    intent.putExtra("email",email);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                }
+            });
+        }
     }
 }
