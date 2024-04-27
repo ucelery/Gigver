@@ -76,8 +76,8 @@ public class CreateAccountContinue extends AppCompatActivity {
                     User newUser = new User(userName,emailAddress,password,addressFinal,mobNum,telNum);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                    Snackbar.make(findViewById(android.R.id.content), "Account has been created", Snackbar.LENGTH_SHORT).show();
                     overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
+                    Snackbar.make(findViewById(android.R.id.content), "Account has been created", Snackbar.LENGTH_SHORT).show();
                     server.AddUser(newUser, new IServerEvent<User>() {
                         @Override
                         public void OnComplete(User result) {
