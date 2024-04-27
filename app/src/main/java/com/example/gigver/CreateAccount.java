@@ -16,6 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
+
+import models.User;
+import utils.IServerEvent;
+import utils.ServerManager;
+
 public class CreateAccount extends AppCompatActivity {
 
     String uName, eAdd, pAdd, pConf;
@@ -24,6 +30,8 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+        ServerManager server = new ServerManager("https://gigver-server.onrender.com");
 
         Animation slide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom);
         Animation emailSlide = AnimationUtils.loadAnimation(this, R.anim.slide_from_bottom_emaillayout);
@@ -68,26 +76,56 @@ public class CreateAccount extends AppCompatActivity {
                 eAdd = emailAdd.getText().toString();
                 pAdd = passwordAdd.getText().toString();
                 pConf = passwordConfirm.getText().toString();
+
+                // Check if email is valid before making server call
                 if(!emailValidator(eAdd)){
                     Snackbar.make(findViewById(android.R.id.content), "Invalid email address", Snackbar.LENGTH_SHORT).show();
-                    return; // Stop further execution
-                };
-                if(uName.isEmpty()){
-                    Snackbar.make(findViewById(android.R.id.content), "Please enter a username", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                if (pAdd.isEmpty() || pConf.isEmpty()) {
-                    Snackbar.make(findViewById(android.R.id.content), "Please enter a password", Snackbar.LENGTH_SHORT).show();
-                } else if (pAdd.equals(pConf)) {
-                    Intent intent = new Intent(getApplicationContext(), CreateAccountContinue.class);
-                     intent.putExtra("uName",uName);
-                     intent.putExtra("eAdd",eAdd);
-                     intent.putExtra("pAdd",pAdd);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation, R.anim.static_animation);
-                } else {
-                    Snackbar.make(findViewById(android.R.id.content), "Password did not match!", Snackbar.LENGTH_SHORT).show();
-                }
+                server.GetUsers(new IServerEvent<List<User>>() {
+                    @Override
+                    public void OnComplete(List<User> result) {
+                        boolean emailExists = false;
+                        boolean userExists = false;
+                        for(User users : result){
+                            if(users.GetEmail().equals(eAdd)){
+                                emailExists = true;
+                                break;
+                            }
+                            if(users.GetName().equals(uName)){
+                                userExists = true;
+                                break;
+                            }
+                        }
+                        if(emailExists){
+                            Snackbar.make(findViewById(android.R.id.content), "Email Address is already taken", Snackbar.LENGTH_SHORT).show();
+                            return; // Stop further execution
+                        }
+                        if(userExists){
+                            Snackbar.make(findViewById(android.R.id.content), "Username is already taken", Snackbar.LENGTH_SHORT).show();
+                            return; // Stop further execution
+                        }
+                        if(uName.isEmpty()){
+                            Snackbar.make(findViewById(android.R.id.content), "Please enter a username", Snackbar.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (pAdd.isEmpty() || pConf.isEmpty()) {
+                            Snackbar.make(findViewById(android.R.id.content), "Please enter a password", Snackbar.LENGTH_SHORT).show();
+                        } else if (pAdd.equals(pConf)) {
+                            Intent intent = new Intent(getApplicationContext(), CreateAccountContinue.class);
+                            intent.putExtra("uName",uName);
+                            intent.putExtra("eAdd",eAdd);
+                            intent.putExtra("pAdd",pAdd);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.static_animation, R.anim.static_animation);
+                        } else {
+                            Snackbar.make(findViewById(android.R.id.content), "Password did not match!", Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void OnFailure(String errorMessage) {
+                    }
+                });
             }
         });
     }
