@@ -34,5 +34,10 @@ public class CreateAccountContinue extends AppCompatActivity {
         ImageView telephoneIcon = (ImageView) findViewById(R.id.imageViewTelephoneNum);
         telephone.startAnimation(telephoneAnim);
         telephoneIcon.startAnimation(telephoneAnim);
+
+        String userName = getIntent().getExtras().getString("uName");
+        String emailAddress = getIntent().getExtras().getString("eAdd");
+        String password = getIntent().getExtras().getString("pAdd");
+        String passwordConfirm = getIntent().getExtras().getString("pConf");
     }
 }

@@ -2,18 +2,23 @@ package com.example.gigver;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class CreateAccount extends AppCompatActivity {
+
+    String uName, eAdd, pAdd, pConf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +57,46 @@ public class CreateAccount extends AppCompatActivity {
         Button continueButton = (Button) findViewById(R.id.submitButton);
         continueButton.startAnimation(createSlide);
 
+        EditText userName = (EditText) findViewById(R.id.addUsername);
+        EditText emailAdd = (EditText) findViewById(R.id.addEmail);
+        EditText passwordAdd = (EditText) findViewById(R.id.addPassword);
+        EditText passwordConfirm = (EditText) findViewById(R.id.confirmPassword);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),CreateAccountContinue.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                uName = userName.getText().toString();
+                eAdd = emailAdd.getText().toString();
+                pAdd = passwordAdd.getText().toString();
+                pConf = passwordConfirm.getText().toString();
+                if(!emailValidator(eAdd)){
+                    Snackbar.make(findViewById(android.R.id.content), "Invalid email address", Snackbar.LENGTH_SHORT).show();
+                    return; // Stop further execution
+                };
+                if(uName.isEmpty()){
+                    Snackbar.make(findViewById(android.R.id.content), "Please enter a username", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (pAdd.isEmpty() || pConf.isEmpty()) {
+                    Snackbar.make(findViewById(android.R.id.content), "Please enter a password", Snackbar.LENGTH_SHORT).show();
+                } else if (pAdd.equals(pConf)) {
+                    Intent intent = new Intent(getApplicationContext(), CreateAccountContinue.class);
+                     intent.putExtra("uName",uName);
+                     intent.putExtra("eAdd",eAdd);
+                     intent.putExtra("pAdd",pAdd);
+                     intent.putExtra("pConf",pConf);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.static_animation, R.anim.static_animation);
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Password did not match!", Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+    public boolean emailValidator(String email){
+        if(!email.isEmpty()&& Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
