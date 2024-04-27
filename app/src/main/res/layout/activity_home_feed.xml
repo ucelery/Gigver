@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".ProfilePage">
+    tools:context=".HomeFeed">
 
     <TextView
         android:id="@+id/textView2"

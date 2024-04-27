@@ -1,6 +1,8 @@
 package com.example.gigver;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -17,6 +19,7 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
         Animation slide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom);
         Animation emailSlide = AnimationUtils.loadAnimation(this, R.anim.slide_from_bottom_emaillayout);
         Animation passwordAddSlide = AnimationUtils.loadAnimation(this,R.anim.slide_from_bottom_passwordadd);
@@ -46,7 +49,16 @@ public class CreateAccount extends AppCompatActivity {
         confirmPasswordInput.startAnimation(passwordConfirmSlide);
         passwordConfirmIcon.startAnimation(passwordConfirmSlide);
 
-        Button createButton = (Button) findViewById(R.id.submitButton);
-        createButton.startAnimation(createSlide);
+        Button continueButton = (Button) findViewById(R.id.submitButton);
+        continueButton.startAnimation(createSlide);
+
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CreateAccountContinue.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+            }
+        });
     }
 }
