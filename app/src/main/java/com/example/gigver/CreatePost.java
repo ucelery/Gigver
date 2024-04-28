@@ -14,8 +14,8 @@ public class CreatePost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
         //Intents for selecting Home page and Profile page
-        ImageView selectHome = (ImageView) findViewById(R.id.unselectedhomeButton);
-        ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
+        ImageView selectHome = (ImageView) findViewById(R.id.homeButton);
+        ImageView selectMe = (ImageView) findViewById(R.id.profileButton);
         String email = getIntent().getExtras().getString("email");
         if(email != null){
             selectHome.setOnClickListener(new View.OnClickListener() {

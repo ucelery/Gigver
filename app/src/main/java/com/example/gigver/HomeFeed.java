@@ -19,20 +19,11 @@ public class HomeFeed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_feed);
         //Intents for selecting Post page and Profile Page
-        ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
-        ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
-        Button logout = (Button) findViewById(R.id.logoutButton);
+        ImageView selectPost = (ImageView) findViewById(R.id.postButton);
+        ImageView selectMe = (ImageView) findViewById(R.id.profileButton);
 
         String email = getIntent().getExtras().getString("email");
         if(email == null){
-            logout.setText("Home");
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-            });
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -46,14 +37,6 @@ public class HomeFeed extends AppCompatActivity {
                 }
             });
         }else{
-            logout.setText("Logout");
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-            });
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

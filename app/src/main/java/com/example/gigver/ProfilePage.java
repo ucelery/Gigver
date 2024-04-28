@@ -30,31 +30,14 @@ public class ProfilePage extends AppCompatActivity {
         ServerManager server = new ServerManager("https://gigver-server.onrender.com");
 
         //Intents for selecting Home page and Post page
-        ImageView selectHome = (ImageView) findViewById(R.id.unselectedhomeButton);
-        ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
+        ImageView selectHome = (ImageView) findViewById(R.id.homeButton);
+        ImageView selectPost = (ImageView) findViewById(R.id.postButton);
         TextView profileName = (TextView) findViewById(R.id.userName);
-        Button logout = (Button) findViewById(R.id.logoutButton);
 
         String email = getIntent().getExtras().getString("email");
         if (email == null) {
             profileName.setText("Guest");
-            logout.setText("Home");
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-            });
         }else {
-            logout.setText("Logout");
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-            });
             server.GetUsers(new IServerEvent<List<User>>() {
                 @Override
                 public void OnComplete(List<User> result) {

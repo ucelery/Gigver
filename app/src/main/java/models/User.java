@@ -12,6 +12,7 @@ import utils.IModel;
  *  This is for prototyping purposes only - author
  */
 public class User implements IModel {
+    public static User currentUser;
     private String id;
     private String name;
     private String email;
