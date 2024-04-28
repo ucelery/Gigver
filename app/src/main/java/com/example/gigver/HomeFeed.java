@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,18 @@ public class HomeFeed extends AppCompatActivity {
         //Intents for selecting Post page and Profile Page
         ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
         ImageView selectMe = (ImageView) findViewById(R.id.unselectedmeButton);
+        Button logout = (Button) findViewById(R.id.logoutButton);
 
         String email = getIntent().getExtras().getString("email");
         if(email == null){
+            logout.setText("Home");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -39,6 +49,14 @@ public class HomeFeed extends AppCompatActivity {
                 }
             });
         }else{
+            logout.setText("Logout");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -3,6 +3,7 @@ package com.example.gigver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,11 +33,19 @@ public class ProfilePage extends AppCompatActivity {
         ImageView selectHome = (ImageView) findViewById(R.id.unselectedhomeButton);
         ImageView selectPost = (ImageView) findViewById(R.id.unselectedpostButton);
         TextView profileName = (TextView) findViewById(R.id.userName);
-        //profileName.setText(getIntent().getExtras().getString("uname"));
+        Button logout = (Button) findViewById(R.id.logoutButton);
 
         String email = getIntent().getExtras().getString("email");
         if (email == null) {
             profileName.setText("Guest");
+            logout.setText("Home");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
             selectHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -53,6 +62,14 @@ public class ProfilePage extends AppCompatActivity {
                 }
             });
         }else {
+            logout.setText("Logout");
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
             server.GetUsers(new IServerEvent<List<User>>() {
                 @Override
                 public void OnComplete(List<User> result) {
@@ -62,7 +79,6 @@ public class ProfilePage extends AppCompatActivity {
                             break;
                         }
                     }
-                    // Update the UI on the main thread
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
