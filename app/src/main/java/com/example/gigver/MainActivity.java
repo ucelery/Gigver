@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
                 intent.putExtra("email", (String) null);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);

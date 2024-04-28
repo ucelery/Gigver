@@ -129,4 +129,109 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewMail"
+        android:layout_width="29dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintEnd_toStartOf="@+id/emailaddressProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/email" />
+
+    <ImageView
+        android:id="@+id/imageViewAddress"
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/addressProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMail"
+        app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/imageViewMobileNum"
+        android:layout_width="38dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/mobileNumberProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAddress"
+        app:srcCompat="@drawable/numbericon" />
+
+    <ImageView
+        android:id="@+id/imageViewTelephoneNum"
+        android:layout_width="38dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/telephoneNumberProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMobileNum"
+        app:srcCompat="@drawable/numbericon" />
+
+    <TextView
+        android:id="@+id/emailaddressProfile"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    <TextView
+        android:id="@+id/addressProfile"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textSize="15.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailaddressProfile" />
+
+    <TextView
+        android:id="@+id/mobileNumberProfile"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressProfile" />
+
+    <TextView
+        android:id="@+id/telephoneNumberProfile"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

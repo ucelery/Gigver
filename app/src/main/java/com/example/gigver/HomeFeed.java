@@ -42,10 +42,7 @@ public class HomeFeed extends AppCompatActivity {
             selectMe.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                    intent.putExtra("email",(String) null);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                    Snackbar.make(findViewById(android.R.id.content), "Please Login", Snackbar.LENGTH_SHORT).show();
                 }
             });
         }else{

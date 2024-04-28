@@ -46,21 +46,6 @@ public class ProfilePage extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            selectHome.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
-                    intent.putExtra("email",(String) null);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-                }
-            });
-            selectPost.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Snackbar.make(findViewById(android.R.id.content), "Please Login to Create Post", Snackbar.LENGTH_SHORT).show();
-                }
-            });
         }else {
             logout.setText("Logout");
             logout.setOnClickListener(new View.OnClickListener() {
