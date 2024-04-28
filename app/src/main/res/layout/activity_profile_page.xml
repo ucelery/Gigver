@@ -19,17 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="119dp"
-        android:layout_height="115dp"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/circularImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="147dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="146dp"
-        android:background="#D9D9D9"
+        android:layout_marginEnd="144dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/profiledefaulticon" />
 
     <ImageView
         android:id="@+id/unselectedpostButton"
@@ -113,5 +114,5 @@
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"  />
+        app:layout_constraintTop_toBottomOf="@+id/circularImage"  />
 </androidx.constraintlayout.widget.ConstraintLayout>
