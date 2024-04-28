@@ -11,26 +11,26 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="518dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141"
         app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/addressAddTextInputLayout"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
         android:hint="Address"
         android:textColorHint="#85FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewCreate">
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewCreate"
+        app:layout_constraintVertical_bias="0.117">
 
         <EditText
             android:id="@+id/addAddress"
@@ -50,12 +50,14 @@
         android:id="@+id/mobileAddTextInputLayout"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="36dp"
         android:hint="Mobile Number"
         android:textColorHint="#85FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressAddTextInputLayout">
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressAddTextInputLayout"
+        app:layout_constraintVertical_bias="0.052">
 
         <EditText
             android:id="@+id/addMobile"
@@ -75,12 +77,14 @@
         android:id="@+id/telephoneAddTextInputLayout"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="36dp"
         android:hint="Telephone Number"
         android:textColorHint="#85FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mobileAddTextInputLayout">
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobileAddTextInputLayout"
+        app:layout_constraintVertical_bias="0.068">
 
         <EditText
             android:id="@+id/addTelephone"
@@ -100,26 +104,21 @@
         android:id="@+id/imageViewAddress"
         android:layout_width="28dp"
         android:layout_height="21dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="333dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewMobileNum"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addressAddTextInputLayout"
         app:layout_constraintEnd_toStartOf="@+id/addressAddTextInputLayout"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home" />
 
     <ImageView
         android:id="@+id/imageViewMobileNum"
         android:layout_width="38dp"
         android:layout_height="29dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="43dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewTelephoneNum"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mobileAddTextInputLayout"
         app:layout_constraintEnd_toStartOf="@+id/mobileAddTextInputLayout"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/numbericon" />
 
@@ -127,12 +126,10 @@
         android:id="@+id/imageViewTelephoneNum"
         android:layout_width="38dp"
         android:layout_height="29dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="273dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/telephoneAddTextInputLayout"
         app:layout_constraintEnd_toStartOf="@+id/telephoneAddTextInputLayout"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/numbericon" />
 
@@ -140,54 +137,52 @@
         android:id="@+id/submitButton"
         android:layout_width="112dp"
         android:layout_height="49dp"
-        android:layout_marginStart="149dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="120dp"
         android:backgroundTint="#F0B232"
         android:text="Create"
         android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telephoneAddTextInputLayout"
+        app:layout_constraintVertical_bias="0.279" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="194dp"
         android:layout_height="25dp"
-        android:layout_marginStart="109dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submitButton"
+        app:layout_constraintVertical_bias="0.468"
         app:srcCompat="@drawable/squiggle" />
 
     <TextView
         android:id="@+id/textviewCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="170dp"
         android:text="Create Your Account"
         android:textColor="@color/white"
         android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.047" />
 
     <ImageView
         android:id="@+id/backArrow"
         android:layout_width="51dp"
         android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="352dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007"
         app:srcCompat="@drawable/finalarrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
