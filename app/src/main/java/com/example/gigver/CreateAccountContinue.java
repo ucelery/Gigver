@@ -56,6 +56,16 @@ public class CreateAccountContinue extends AppCompatActivity {
         EditText finalAddress = (EditText) findViewById(R.id.addAddress);
         EditText mobileAdd = (EditText) findViewById(R.id.addMobile);
         EditText telAdd = (EditText) findViewById(R.id.addTelephone);
+        ImageView back = (ImageView) findViewById(R.id.backArrow);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CreateAccount.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+            }
+        });
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

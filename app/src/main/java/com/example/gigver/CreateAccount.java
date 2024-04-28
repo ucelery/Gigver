@@ -69,6 +69,16 @@ public class CreateAccount extends AppCompatActivity {
         EditText emailAdd = (EditText) findViewById(R.id.addEmail);
         EditText passwordAdd = (EditText) findViewById(R.id.addPassword);
         EditText passwordConfirm = (EditText) findViewById(R.id.confirmPassword);
+        ImageView back = (ImageView) findViewById(R.id.backArrow);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+            }
+        });
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
