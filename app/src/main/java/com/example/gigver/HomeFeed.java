@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class HomeFeed extends AppCompatActivity {
 
     @Override
@@ -24,10 +26,7 @@ public class HomeFeed extends AppCompatActivity {
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(),CreatePost.class);
-                    intent.putExtra("email",(String) null);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+                    Snackbar.make(findViewById(android.R.id.content), "Please Login to Create Post", Snackbar.LENGTH_SHORT).show();
                 }
             });
             selectMe.setOnClickListener(new View.OnClickListener() {
