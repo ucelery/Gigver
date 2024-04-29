@@ -5,29 +5,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomListViewAdapter extends BaseAdapter {
+import java.util.List;
 
+import models.Post;
+
+public class CustomListViewAdapter extends BaseAdapter {
     Context context;
-    String agents[];
-    int valoImages[];
+    List<Post> posts;
     LayoutInflater inflater;
-    public CustomListViewAdapter(Context ctx, String[] valoAgents, int [] images){
+    public CustomListViewAdapter(Context ctx, List<Post> posts){
         this.context = ctx;
-        this.agents = valoAgents;
-        this.valoImages = images;
+        this.posts = posts;
+
         inflater = LayoutInflater.from(ctx);
     }
     @Override
     public int getCount() {
-        return agents.length;
+        return posts.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return posts.get(position);
     }
 
     @Override
@@ -37,11 +38,14 @@ public class CustomListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.activity_custom_list_view, null);
+        if (convertView == null)
+            convertView = inflater.inflate(R.layout.activity_custom_list_view, parent, false);
+
         TextView view = (TextView) convertView.findViewById(R.id.textViewAgent);
-        ImageView imageVal = (ImageView) convertView.findViewById(R.id.imageIcon);
-        view.setText(agents[position]);
-        imageVal.setImageResource(valoImages[position]);
+
+        Post currentItem = (Post) getItem(position);
+
+        view.setText(currentItem.GetSubject());
         return convertView;
     }
 }

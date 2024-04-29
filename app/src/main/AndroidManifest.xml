@@ -29,7 +29,9 @@
             android:exported="false" />
         <activity
             android:name=".HomeFeed"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.FullScreen"
+        />
         <activity
             android:name=".AccountRating"
             android:exported="false" />

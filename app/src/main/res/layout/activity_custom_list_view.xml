@@ -11,13 +11,16 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageIcon"/>
-    
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textViewAgent"
+        android:layout_width="311dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/quicksand"
+        android:gravity="center_vertical"
+        android:text="My Text"
         android:textSize="30dp"
-        android:gravity="center"
-        android:text="My Text"/>
+        android:textStyle="bold" />
 
 </LinearLayout>
