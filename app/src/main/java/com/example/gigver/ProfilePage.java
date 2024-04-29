@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -42,5 +43,21 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             profileName.setText("Guest");
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigatin_view);
+        bottomNavigationView.findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfilePage.this, HomeFeed.class));
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+            }
+        });
+        bottomNavigationView.findViewById(R.id.postButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfilePage.this, CreatePost.class));
+                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
+            }
+        });
     }
 }

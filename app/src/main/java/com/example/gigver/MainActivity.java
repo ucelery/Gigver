@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         for(User user : result){
                             // Log the user in when inputted credentials are correct
                             if(user.GetEmail().equals(emailString) && user.GetPassword().equals(passwordString)){
-                                Intent intent = new Intent(getApplicationContext(), MainView.class);
+                                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                                 startActivity(intent);
 
                                 existingUser = true;
