@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import models.User;
+
 public class HomeFeed extends AppCompatActivity {
     //Sample List views only
     String valoAgents[] = {"Jett","Raze","Reyna"};
@@ -29,8 +31,7 @@ public class HomeFeed extends AppCompatActivity {
         CustomListViewAdapter adapter = new CustomListViewAdapter(getApplicationContext(),valoAgents,valoAgentImages);
         listView.setAdapter(adapter);
 
-        String email = getIntent().getExtras().getString("email");
-        if(email == null){
+        if(User.currentUser == null){
             selectPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -48,7 +49,6 @@ public class HomeFeed extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), CreatePost.class);
-                    intent.putExtra("email",email);
                     startActivity(intent);
                     overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
                 }
@@ -57,7 +57,6 @@ public class HomeFeed extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                    intent.putExtra("email",email);
                     startActivity(intent);
                     overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
                 }
