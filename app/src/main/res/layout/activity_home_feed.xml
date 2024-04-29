@@ -33,42 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001" />
 
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/transparent"
-        android:contentDescription="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/home_button_unselected" />
-
-    <ImageButton
-        android:id="@+id/postButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/transparent"
-        android:contentDescription="Post"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/homeButton"
-        app:srcCompat="@drawable/post_button_unselected" />
-
-    <ImageButton
-        android:id="@+id/profileButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/transparent"
-        android:contentDescription="Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeButton"
-        app:srcCompat="@drawable/profile_button_unselected" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="96dp"

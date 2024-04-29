@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/profilePage">
+
+    <activity
+        android:id="@+id/createPost"
+        android:name="com.example.gigver.CreatePost"
+        android:label="activity_create_post"
+        tools:layout="@layout/activity_create_post" />
+    <activity
+        android:id="@+id/homeFeed"
+        android:name="com.example.gigver.HomeFeed"
+        android:label="activity_home_feed"
+        tools:layout="@layout/activity_home_feed" />
+    <activity
+        android:id="@+id/profilePage"
+        android:name="com.example.gigver.ProfilePage"
+        android:label="activity_profile_page"
+        tools:layout="@layout/activity_profile_page" />
+</navigation>

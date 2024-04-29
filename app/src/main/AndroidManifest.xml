@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MainView"
+            android:exported="false" />
+        <activity
             android:name=".CustomListView"
             android:exported="false" />
         <activity
@@ -30,8 +33,7 @@
         <activity
             android:name=".HomeFeed"
             android:exported="false"
-            android:theme="@style/AppTheme.FullScreen"
-        />
+            android:theme="@style/AppTheme.FullScreen" />
         <activity
             android:name=".AccountRating"
             android:exported="false" />

@@ -20,20 +20,13 @@ import utils.IServerEvent;
 import utils.ServerManager;
 
 public class ProfilePage extends AppCompatActivity {
-
-    String valoAgents[] = {"Jett","Reyna","Raze"};
-    int valoImages [] = {R.drawable.jett, R.drawable.raze, R.drawable.reyna};
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
 
-        listView = (ListView) findViewById(R.id.listView);
-        ProfilePageScrollViewTest pfp = new ProfilePageScrollViewTest(getApplicationContext(),valoAgents,valoImages);
         //Intents for selecting Home page and Post page
-        ImageView selectHome = (ImageView) findViewById(R.id.homeButton);
-        ImageView selectPost = (ImageView) findViewById(R.id.postButton);
         TextView profileName = (TextView) findViewById(R.id.userName);
         TextView address = (TextView) findViewById(R.id.addressProfile);
         TextView email = (TextView) findViewById(R.id.emailaddressProfile);
@@ -46,27 +39,8 @@ public class ProfilePage extends AppCompatActivity {
             mobile.setText(User.currentUser.GetMobileNo());
             address.setText(User.currentUser.GetAddress());
             telephone.setText(User.currentUser.GetTelephoneNo());
-            listView.setAdapter(pfp);
         } else {
             profileName.setText("Guest");
         }
-
-        selectHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-            }
-        });
-
-        selectPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CreatePost.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-            }
-        });
     }
 }

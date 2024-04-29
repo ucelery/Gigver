@@ -85,46 +85,5 @@ public class HomeFeed extends AppCompatActivity {
                 // Error loading posts
             }
         });
-
-        InitializeButtons();
-    }
-
-    private void InitializeButtons() {
-        // Different On Click implementation if the user is logged in or not
-        ImageView selectPost = (ImageView) findViewById(R.id.postButton);
-        ImageView selectMe = (ImageView) findViewById(R.id.profileButton);
-
-        if (User.currentUser == null){
-            selectPost.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Snackbar.make(findViewById(android.R.id.content), "Please Login to Create Post", Snackbar.LENGTH_SHORT).show();
-                }
-            });
-            selectMe.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Snackbar.make(findViewById(android.R.id.content), "Please Login", Snackbar.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            selectPost.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), CreatePost.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-                }
-            });
-
-            selectMe.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.static_animation,R.anim.static_animation);
-                }
-            });
-        }
     }
 }
