@@ -45,7 +45,35 @@ public class HomeFeed extends AppCompatActivity {
                                 Post clickedPost = (Post) parent.getItemAtPosition(position);
 
                                 // Go to a post view
-                                Intent postIntent = new Intent(getApplicationContext(), );
+                                Intent postIntent = new Intent(getApplicationContext(), PostPreview.class);
+
+                                server.GetUsers(new IServerEvent<List<User>>() {
+                                    @Override
+                                    public void OnComplete(List<User> result) {
+                                        // Get the poster user data
+                                        for (User user : result) {
+                                            System.out.println(user.GetID() + " == " + clickedPost.GetPosterID());
+                                            if (user.GetID().equals(clickedPost.GetPosterID())) {
+                                                postIntent.putExtra("name", user.GetName());
+                                                postIntent.putExtra("email", user.GetEmail());
+                                                postIntent.putExtra("mobile", user.GetMobileNo());
+                                                postIntent.putExtra("telephone", user.GetTelephoneNo());
+                                                postIntent.putExtra("rating", "n/a");
+
+                                                postIntent.putExtra("gig_desc", clickedPost.GetDescription());
+                                                postIntent.putExtra("gig_rewards", clickedPost.GetRewards());
+                                                postIntent.putExtra("gig_subject", clickedPost.GetSubject());
+
+                                                startActivity(postIntent);
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void OnFailure(String errorMessage) {
+
+                                    }
+                                });
                             }
                         });
                     }

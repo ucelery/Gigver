@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- GIG DETAILS TEXT-->
+            <!-- GIG SUBJECT TEXT-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,6 +25,7 @@
                 android:layout_marginTop="24dp"
                 >
                 <TextView
+                    android:id="@+id/gigSubjectLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_black"
@@ -62,13 +63,14 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Name:"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/nameLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
+                    android:layout_marginStart="15sp"
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
@@ -81,17 +83,18 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Email:"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/emailLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
 
                 <TextView
@@ -100,17 +103,18 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Mobile:"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/mobileLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
 
                 <TextView
@@ -119,17 +123,18 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Telephone:"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/telephoneLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
+                    android:layout_marginStart="15sp"
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
 
                 <TextView
@@ -138,17 +143,18 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Rating:"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/ratingLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
             </GridLayout>
 
@@ -175,13 +181,66 @@
                 android:gravity="center"
                 >
                 <TextView
+                    android:id="@+id/gigDetails"
                     android:layout_marginHorizontal="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand"
                     android:text="Details Details Details Details Details  Details Details Details Details "
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp" />
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="24dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_black"
+                    android:text="Rewards"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/gigRewards"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Rewardssss"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="69dp"
+                >
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="194dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/submitButton"
+                    app:layout_constraintVertical_bias="0.227"
+                    app:srcCompat="@drawable/squiggle" />
             </LinearLayout>
         </LinearLayout>
 

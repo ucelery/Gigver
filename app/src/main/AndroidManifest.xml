@@ -39,6 +39,9 @@
             android:name=".ProfilePage"
             android:exported="false" />
         <activity
+            android:name=".PostPreview"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main">
