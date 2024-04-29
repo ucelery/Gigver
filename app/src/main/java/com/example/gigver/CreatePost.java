@@ -17,6 +17,7 @@ public class CreatePost extends AppCompatActivity {
         ImageView selectHome = (ImageView) findViewById(R.id.homeButton);
         ImageView selectMe = (ImageView) findViewById(R.id.profileButton);
         String email = getIntent().getExtras().getString("email");
+
         if(email != null){
             selectHome.setOnClickListener(new View.OnClickListener() {
                 @Override
