@@ -49,20 +49,21 @@ public class MainActivity extends AppCompatActivity {
                 server.GetUsers(new IServerEvent<List<User>>() {
                     @Override
                     public void OnComplete(List<User> result) {
-                        boolean userExists = false;
+                        boolean existingUser = false;
                         for(User user : result){
+                            // Log the user in when inputted credentials are correct
                             if(user.GetEmail().equals(emailString) && user.GetPassword().equals(passwordString)){
-                                userExists = true;
+                                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                                startActivity(intent);
+
+                                existingUser = true;
+                                User.currentUser = user;
                                 break;
                             }
                         }
-                        if(userExists){
-                            Intent intent = new Intent(getApplicationContext(),ProfilePage.class);
-                            intent.putExtra("email",eMail);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
-                        }
-                        else {
+
+                        // Notify the user if user isn't found
+                        if (!existingUser) {
                             // No user found with provided email and password, display error message
                             Snackbar.make(findViewById(android.R.id.content), "Invalid email or password", Snackbar.LENGTH_SHORT).show();
                         }
