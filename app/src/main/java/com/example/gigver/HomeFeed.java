@@ -7,13 +7,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
 public class HomeFeed extends AppCompatActivity {
-
+    //Sample List views only
+    String valoAgents[] = {"Jett","Raze","Reyna"};
+    int valoAgentImages [] = {R.drawable.jett,R.drawable.reyna,R.drawable.raze};
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,9 @@ public class HomeFeed extends AppCompatActivity {
         //Intents for selecting Post page and Profile Page
         ImageView selectPost = (ImageView) findViewById(R.id.postButton);
         ImageView selectMe = (ImageView) findViewById(R.id.profileButton);
+        listView = (ListView) findViewById(R.id.listView);
+        CustomListViewAdapter adapter = new CustomListViewAdapter(getApplicationContext(),valoAgents,valoAgentImages);
+        listView.setAdapter(adapter);
 
         String email = getIntent().getExtras().getString("email");
         if(email == null){
