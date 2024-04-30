@@ -7,8 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.gigver.R;
+
+import models.Post;
+import models.User;
+import utils.IServerEvent;
+import utils.ServerManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,7 +69,24 @@ public class CreatePostFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_create_post, container, false);
 
-        // TODO: Implement Create Post Functions
+        TextView titleInput = (TextView) rootView.findViewById(R.id.titlePost);
+        TextView rewardInput = (TextView) rootView.findViewById(R.id.rewardPost);
+        TextView descriptionInput = (TextView) rootView.findViewById(R.id.descriptionPost);
+
+        Post newPost = new Post(User.currentUser.GetID(), titleInput.getText().toString(), descriptionInput.getText().toString(), rewardInput.getText().toString());
+
+        ServerManager server = new ServerManager("");
+        server.AddPost(newPost, new IServerEvent<Post>() {
+            @Override
+            public void OnComplete(Post result) {
+                
+            }
+
+            @Override
+            public void OnFailure(String errorMessage) {
+
+            }
+        });
 
         return rootView;
     }

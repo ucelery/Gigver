@@ -21,6 +21,7 @@ import java.util.List;
 import models.Post;
 import models.User;
 import utils.IServerEvent;
+import utils.LoadingDialog;
 import utils.ServerManager;
 
 public class HomeFeedFragment extends Fragment {
@@ -43,9 +44,13 @@ public class HomeFeedFragment extends Fragment {
 
         ServerManager server = new ServerManager("https://gigver-server.onrender.com");
 
+        LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+
+        loadingDialog.StartLoading();
         server.GetPosts(new IServerEvent<List<Post>>() {
             @Override
             public void OnComplete(List<Post> result) {
+                loadingDialog.DismissDialog();
                 requireActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -98,6 +103,7 @@ public class HomeFeedFragment extends Fragment {
             @Override
             public void OnFailure(String errorMessage) {
                 // Error loading posts
+                loadingDialog.DismissDialog();
             }
         });
 

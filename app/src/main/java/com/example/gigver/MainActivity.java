@@ -23,6 +23,7 @@ import java.util.List;
 import models.Post;
 import models.User;
 import utils.IServerEvent;
+import utils.LoadingDialog;
 import utils.ServerManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,9 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 String emailString = emailEditText.getText().toString();
                 String passwordString = passwordEditText.getText().toString();
                 eMail = emailEditText.getText().toString();
+
+                LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
+                loadingDialog.StartLoading();
                 server.GetUsers(new IServerEvent<List<User>>() {
                     @Override
                     public void OnComplete(List<User> result) {
+                        loadingDialog.DismissDialog();
+
                         boolean existingUser = false;
                         for(User user : result){
                             // Log the user in when inputted credentials are correct
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void OnFailure(String errorMessage) {
+                        loadingDialog.DismissDialog();
                     }
                 });
             }
@@ -86,26 +93,5 @@ public class MainActivity extends AppCompatActivity {
         ImageView passwordIcon = (ImageView) findViewById(R.id.imageView);
         password.startAnimation(passwordInput);
         passwordIcon.startAnimation(passwordInput);
-
-        //Intent for Create Account and Continue as Guest
-        TextView create = (TextView) findViewById(R.id.createAccount);
-        TextView guest = (TextView) findViewById(R.id.continueGuest);
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),CreateAccount.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
-            }
-        });
-        guest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainView.class);
-                User.currentUser = null;
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
-            }
-        });
     }
 }
