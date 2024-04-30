@@ -2,6 +2,7 @@ package com.example.gigver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ import com.example.gigver.fragments.HomeFeedFragment;
 import com.example.gigver.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import models.User;
 
 public class MainView extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     BottomNavigationView bottomNav;
@@ -30,6 +33,8 @@ public class MainView extends AppCompatActivity implements NavigationBarView.OnI
 
         bottomNav.setOnItemSelectedListener(this);
         bottomNav.setSelectedItemId(R.id.homeButton);
+
+        this.profileFrag = new ProfileFragment(User.currentUser);
     }
 
     @Override
@@ -75,5 +80,12 @@ public class MainView extends AppCompatActivity implements NavigationBarView.OnI
                     .replace(R.id.flFragment, profileFrag)
                     .commit();
         }
+    }
+
+    public void ChangeView(Fragment frag) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, frag)
+                .commit();
     }
 }
