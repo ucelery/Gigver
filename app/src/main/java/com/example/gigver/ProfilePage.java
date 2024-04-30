@@ -45,6 +45,7 @@ public class ProfilePage extends AppCompatActivity {
         }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigatin_view);
+        bottomNavigationView.setSelectedItemId(R.id.profileButton);
         bottomNavigationView.findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
