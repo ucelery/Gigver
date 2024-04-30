@@ -8,59 +8,49 @@
     android:background="#353535"
     tools:context=".ProfilePage">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:background="#F0B232"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/circularImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.08"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/profiledefaulticon" />
-
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:text="Chauncey"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularImage" />
-
-
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="525dp"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/circularImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.08"
+                app:shapeAppearanceOverlay="@style/circular"
+                app:srcCompat="@drawable/profiledefaulticon" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:fontFamily="@font/quicksand"
+                android:text="Chauncey"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circularImage" />
 
             <ImageView
                 android:id="@+id/imageViewMail"
@@ -110,6 +100,7 @@
                 android:id="@+id/emailaddressProfile"
                 android:layout_width="272dp"
                 android:layout_height="48dp"
+                android:layout_marginTop="25dp"
                 android:backgroundTint="@color/white"
                 android:ems="10"
                 android:fontFamily="@font/quicksand"
@@ -118,9 +109,11 @@
                 android:text="cotbplaza@mymail.mapua.edu.ph"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
 
             <TextView
                 android:id="@+id/addressProfile"
@@ -134,6 +127,8 @@
                 android:text="Makati City, Philippines"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.482"
                 app:layout_constraintStart_toStartOf="parent"
@@ -151,6 +146,8 @@
                 android:text="09123456789"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.482"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,10 +165,45 @@
                 android:text="028700"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.482"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile" />
+
+            <TextView
+                android:id="@+id/postsHeader"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/archivo_black"
+                android:text="Posts"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/telephoneNumberProfile" />
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:divider="@color/black"
+                android:dividerHeight="0dp"
+                android:listSelector="@color/purple_200"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="366dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postsHeader" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

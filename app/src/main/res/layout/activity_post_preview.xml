@@ -74,7 +74,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="Poster"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
 
                 <TextView
