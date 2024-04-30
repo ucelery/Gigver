@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         for(User user : result){
                             // Log the user in when inputted credentials are correct
                             if(user.GetEmail().equals(emailString) && user.GetPassword().equals(passwordString)){
-                                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                                Intent intent = new Intent(getApplicationContext(), MainView.class);
                                 startActivity(intent);
 
                                 existingUser = true;
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeFeed.class);
+                Intent intent = new Intent(getApplicationContext(), MainView.class);
                 User.currentUser = null;
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);

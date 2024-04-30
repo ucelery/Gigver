@@ -1,8 +1,10 @@
-package com.example.gigver;
+package com.example.gigver.adapter;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.gigver.R;
 
 public class CustomListView extends AppCompatActivity {
 

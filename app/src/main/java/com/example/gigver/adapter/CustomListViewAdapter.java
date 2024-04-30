@@ -1,4 +1,4 @@
-package com.example.gigver;
+package com.example.gigver.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.gigver.R;
 
 import java.util.List;
 

@@ -19,7 +19,7 @@
             android:name=".MainView"
             android:exported="false" />
         <activity
-            android:name=".CustomListView"
+            android:name=".adapter.CustomListView"
             android:exported="false" />
         <activity
             android:name=".CreateAccountContinue"
