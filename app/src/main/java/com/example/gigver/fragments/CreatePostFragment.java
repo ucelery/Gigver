@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.gigver.MainView;
 import com.example.gigver.R;
 
 import models.Post;
 import models.User;
 import utils.IServerEvent;
+import utils.LoadingDialog;
 import utils.ServerManager;
 
 /**
@@ -22,45 +25,13 @@ import utils.ServerManager;
  * create an instance of this fragment.
  */
 public class CreatePostFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public CreatePostFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CreatePostFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CreatePostFragment newInstance(String param1, String param2) {
-        CreatePostFragment fragment = new CreatePostFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -69,22 +40,43 @@ public class CreatePostFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_create_post, container, false);
 
-        TextView titleInput = (TextView) rootView.findViewById(R.id.titlePost);
-        TextView rewardInput = (TextView) rootView.findViewById(R.id.rewardPost);
-        TextView descriptionInput = (TextView) rootView.findViewById(R.id.descriptionPost);
+        EditText titleInput = (EditText) rootView.findViewById(R.id.titlePost);
+        EditText rewardInput = (EditText) rootView.findViewById(R.id.rewardPost);
+        EditText descriptionInput = (EditText) rootView.findViewById(R.id.descriptionPost);
 
-        Post newPost = new Post(User.currentUser.GetID(), titleInput.getText().toString(), descriptionInput.getText().toString(), rewardInput.getText().toString());
-
-        ServerManager server = new ServerManager("");
-        server.AddPost(newPost, new IServerEvent<Post>() {
-            @Override
-            public void OnComplete(Post result) {
-                
-            }
+        rootView.findViewById(R.id.submitButton).setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void OnFailure(String errorMessage) {
+            public void onClick(View v) {
+                Post newPost = new Post(User.currentUser.GetID(), titleInput.getText().toString(), descriptionInput.getText().toString(), rewardInput.getText().toString());
 
+                ServerManager server = new ServerManager("https://gigver-server.onrender.com");
+                LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+
+                loadingDialog.StartLoading();
+                server.AddPost(newPost, new IServerEvent<Post>() {
+                    @Override
+                    public void OnComplete(Post result) {
+                        System.out.println("Clearing Text");
+                        loadingDialog.DismissDialog();
+
+                        titleInput.getText().clear();
+                        rewardInput.getText().clear();
+                        descriptionInput.getText().clear();
+
+                        System.out.println("Change View");
+
+                        MainView parent = (MainView) getActivity();
+                        parent.ChangeView(R.id.homeButton);
+                    }
+
+                    @Override
+                    public void OnFailure(String errorMessage) {
+                        loadingDialog.DismissDialog();
+
+                        System.out.println(errorMessage);
+                    }
+                });
             }
         });
 

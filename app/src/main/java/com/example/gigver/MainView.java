@@ -57,4 +57,23 @@ public class MainView extends AppCompatActivity implements NavigationBarView.OnI
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void ChangeView(int id) {
+        if (id == R.id.homeButton) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, homeFeedFrag)
+                    .commit();
+        } else if (id == R.id.postButton) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, createPostFrag)
+                    .commit();
+        } else if (id == R.id.profileButton) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flFragment, profileFrag)
+                    .commit();
+        }
+    }
 }

@@ -152,7 +152,8 @@ public class ServerManager {
                 try {
                     StringBuffer response = PostData(apiUrl, newPost);
 
-                    Post postFromDB = new Post(new JSONObject(response.toString()));
+                    System.out.println(response.toString());
+                    Post postFromDB = new Post(new JSONObject(response.toString()).getJSONObject("post"));
 
                     callback.OnComplete(postFromDB);
                 } catch (IOException e) {
