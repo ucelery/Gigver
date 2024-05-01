@@ -31,6 +31,8 @@ import utils.RateDialog;
 import utils.ServerManager;
 
 public class ProfileFragment extends Fragment {
+    public static final String ARG_OBJECT = "object";
+
     private User user;
     private ArrayList<Post> posts;
 

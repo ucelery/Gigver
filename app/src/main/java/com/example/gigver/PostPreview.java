@@ -4,31 +4,55 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.gigver.adapter.PagerAdapter;
+import com.example.gigver.fragments.PostViewFragment;
+import com.example.gigver.fragments.ProfileFragment;
+
+import java.sql.Array;
+import java.util.ArrayList;
+
+import models.Post;
+import models.User;
 
 public class PostPreview extends AppCompatActivity {
+    private Post post;
+    private User poster;
+
+    private PostViewFragment postView = new PostViewFragment();
+    private ProfileFragment profileView = new ProfileFragment();
+
+    private PagerAdapter pagerAdapter;
+    private ViewPager2 pager;
+
+    public PostPreview() {}
+
+    public PostPreview(User user, Post post) {
+        this.poster = user;
+        this.post = post;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_preview);
 
-        TextView subject = (TextView) findViewById(R.id.gigSubjectLabel);
-        TextView details = (TextView) findViewById(R.id.gigDetails);
-        TextView rewards = (TextView) findViewById(R.id.gigRewards);
+        pagerAdapter = new PagerAdapter(profileView);
+        pager = findViewById(R.id.pager);
+        pager.setAdapter(pagerAdapter);
 
-        TextView name = (TextView) findViewById(R.id.nameLabel);
-        TextView email = (TextView) findViewById(R.id.emailLabel);
-        TextView mobile = (TextView) findViewById(R.id.mobileLabel);
-        TextView telephone = (TextView) findViewById(R.id.telephoneLabel);
-        TextView rating = (TextView) findViewById(R.id.ratingLabel);
+//        postView = new PostViewFragment(post);
+//        profileView = new ProfileFragment(poster);
+//
+//        ArrayList<Fragment> fragments = new ArrayList<>();
+//        fragments.add(profileView);
+//        fragments.add(postView);
 
-        subject.setText(getIntent().getExtras().getString("gig_subject"));
-        details.setText(getIntent().getExtras().getString("gig_desc"));
-        rewards.setText(getIntent().getExtras().getString("gig_rewards"));
-
-        name.setText(getIntent().getExtras().getString("name"));
-        email.setText(getIntent().getExtras().getString("email"));
-        mobile.setText(getIntent().getExtras().getString("mobile"));
-        telephone.setText(getIntent().getExtras().getString("telephone"));
-        rating.setText(getIntent().getExtras().getString("rating"));
+//        pagerAdapter = new PagerAdapter(fragments);
+//        pager = (ViewPager2) findViewById(R.id.pager);
+//        pager.setAdapter(pagerAdapter);
     }
 }
