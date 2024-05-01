@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import models.Post;
 import models.User;
 import utils.IServerEvent;
 import utils.LoadingDialog;
+import utils.RateDialog;
 import utils.ServerManager;
 
 public class ProfileFragment extends Fragment {
@@ -59,7 +61,17 @@ public class ProfileFragment extends Fragment {
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
 
+        ImageButton rateButton = rootView.findViewById(R.id.rateButton);
+
+        // Disable Rate Initially
+        rateButton.setVisibility(View.GONE);
+
         if (user != null) {
+            // Enable Rating Button for Other users
+            if (!user.GetID().equals(User.currentUser.GetID()))
+                rateButton.setVisibility(View.VISIBLE);
+            else rateButton.setVisibility(View.GONE);
+
             profileName.setText(user.GetName());
             email.setText(user.GetEmail());
             mobile.setText(user.GetMobileNo());
@@ -202,5 +214,15 @@ public class ProfileFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void InitializeRateButton(ImageButton rateButton) {
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RateDialog rateDialog = new RateDialog(getActivity());
+                rateDialog.ShowDialog(User.currentUser, user);
+            }
+        });
     }
 }
