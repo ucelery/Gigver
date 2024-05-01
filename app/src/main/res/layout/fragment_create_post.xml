@@ -8,86 +8,97 @@
     android:background="#353535"
     tools:context=".CreatePost">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="423dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="745dp"
+        android:background="#F0B232"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/titlePost"
         android:layout_width="278dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Title"
         android:inputType="text"
-        android:textColor="@color/white"
+        android:hint="Title"
         android:textColorHint="#80FFFFFF"
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postTextView" />
 
     <EditText
-        android:layout_marginTop="10dp"
         android:id="@+id/descriptionPost"
         android:layout_width="278dp"
-        android:layout_height="48dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Description"
         android:inputType="textMultiLine"
-        android:textColor="@color/white"
+        android:hint="Description"
         android:textColorHint="#80FFFFFF"
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePost"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePost" />
 
     <ImageView
         android:id="@+id/descriptionicon"
         android:layout_width="28dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/descriptionPost"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/descriptionPost"
-        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleicon"
         app:srcCompat="@drawable/descriptionicon" />
 
     <ImageView
         android:id="@+id/rewardicon"
         android:layout_width="32dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rewardPost"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/rewardPost"
-        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionicon"
         app:srcCompat="@drawable/rewardicon" />
 
     <EditText
-        android:layout_marginTop="10dp"
         android:id="@+id/rewardPost"
         android:layout_width="278dp"
-        android:layout_height="48dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Reward"
         android:inputType="number"
-        android:textColor="@color/white"
+        android:hint="Reward"
         android:textColorHint="#80FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionPost"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionPost" />
 
     <EditText
-        android:layout_marginTop="10dp"
         android:id="@+id/mobileNumber"
         android:layout_width="278dp"
-        android:layout_height="48dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Mobile No."
@@ -95,56 +106,56 @@
         android:textColor="@color/white"
         android:textColorHint="#80FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rewardPost"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/rewardPost" />
 
     <ImageView
         android:id="@+id/numbericon"
         android:layout_width="32dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mobileNumber"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/mobileNumber"
-        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rewardicon"
         app:srcCompat="@drawable/numbericon" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="112dp"
         android:layout_height="49dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#F0B232"
         android:text="Submit"
         android:textSize="19dp"
         app:layout_constraintEnd_toEndOf="@+id/mobileNumber"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/mobileNumber"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
 
     <TextView
         android:id="@+id/postTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
         android:text="Make a gig post!"
         android:textColor="@color/white"
         android:textSize="25dp"
-        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/titleicon"
         android:layout_width="28dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/titlePost"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/titlePost"
-        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/titleicon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

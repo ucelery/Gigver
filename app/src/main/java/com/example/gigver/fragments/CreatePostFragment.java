@@ -19,11 +19,6 @@ import utils.IServerEvent;
 import utils.LoadingDialog;
 import utils.ServerManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreatePostFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreatePostFragment extends Fragment {
     public CreatePostFragment() {
         // Required empty public constructor
