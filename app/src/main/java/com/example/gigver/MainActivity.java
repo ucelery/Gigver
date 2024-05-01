@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        TextView guestButton =(TextView)findViewById(R.id.continueGuest);
+        TextView createAccButton =(TextView)findViewById(R.id.createAccount);
+
         ServerManager server = new ServerManager("https://gigver-server.onrender.com");
 
         //Login Button main function
@@ -79,6 +82,22 @@ public class MainActivity extends AppCompatActivity {
                         loadingDialog.DismissDialog();
                     }
                 });
+            }
+        });
+
+        guestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainView.class);
+                startActivity(intent);
+            }
+        });
+
+        createAccButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CreateAccount.class);
+                startActivity(intent);
             }
         });
 
