@@ -3,19 +3,14 @@ package com.example.gigver.adapter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import com.example.gigver.fragments.PostViewFragment;
 import com.example.gigver.fragments.ProfileFragment;
 
-import java.util.ArrayList;
-
 public class PagerAdapter extends FragmentStateAdapter {
-    public PagerAdapter(Fragment fragment) {
-        super(fragment);
+    public PagerAdapter(AppCompatActivity activity) {
+        super(activity);
     }
 
     @NonNull

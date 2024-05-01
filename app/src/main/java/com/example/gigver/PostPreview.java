@@ -33,6 +33,9 @@ public class PostPreview extends AppCompatActivity {
     public PostPreview(User user, Post post) {
         this.poster = user;
         this.post = post;
+
+        postView = new PostViewFragment(post);
+        profileView = new ProfileFragment(poster);
     }
 
     @Override
@@ -40,19 +43,18 @@ public class PostPreview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_preview);
 
-        pagerAdapter = new PagerAdapter(profileView);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.pager, postView)
+                .commit();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.pager, profileView)
+                .commit();
+
+        pagerAdapter = new PagerAdapter(this);
         pager = findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
-
-//        postView = new PostViewFragment(post);
-//        profileView = new ProfileFragment(poster);
-//
-//        ArrayList<Fragment> fragments = new ArrayList<>();
-//        fragments.add(profileView);
-//        fragments.add(postView);
-
-//        pagerAdapter = new PagerAdapter(fragments);
-//        pager = (ViewPager2) findViewById(R.id.pager);
-//        pager.setAdapter(pagerAdapter);
     }
 }

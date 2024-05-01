@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +65,6 @@ public class HomeFeedFragment extends Fragment {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 Post clickedPost = (Post) parent.getItemAtPosition(position);
 
-                                // Go to a post view
-                                Intent postIntent = new Intent(requireContext().getApplicationContext(), PostPreview.class);
-
                                 server.GetUsers(new IServerEvent<List<User>>() {
                                     @Override
                                     public void OnComplete(List<User> result) {
@@ -74,17 +72,10 @@ public class HomeFeedFragment extends Fragment {
                                         for (User user : result) {
                                             System.out.println(user.GetID() + " == " + clickedPost.GetPosterID());
                                             if (user.GetID().equals(clickedPost.GetPosterID())) {
-                                                postIntent.putExtra("name", user.GetName());
-                                                postIntent.putExtra("email", user.GetEmail());
-                                                postIntent.putExtra("mobile", user.GetMobileNo());
-                                                postIntent.putExtra("telephone", user.GetTelephoneNo());
-                                                postIntent.putExtra("rating", "n/a");
-
-                                                postIntent.putExtra("gig_desc", clickedPost.GetDescription());
-                                                postIntent.putExtra("gig_rewards", clickedPost.GetRewards());
-                                                postIntent.putExtra("gig_subject", clickedPost.GetSubject());
-
-                                                startActivity(postIntent);
+                                                // Go to a post view
+                                                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                                                transaction.replace(R.id.flFragment, new PostPreviewFragment(user, clickedPost));
+                                                transaction.commit();
                                             }
                                         }
                                     }
