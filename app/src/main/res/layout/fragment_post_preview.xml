@@ -1,14 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PostPreviewFragment">
+    android:background="#353535"
+    >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-</FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+                    <ImageButton
+                        android:id="@+id/completeButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/transparent"
+                        android:src="@drawable/check_green"
+                        android:scaleType="fitCenter"
+                        android:padding="2dp"
+                        android:layout_marginEnd="17dp"
+                        android:layout_marginTop="17dp"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/rateButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/transparent"
+                        android:src="@drawable/star_unfilled"
+                        android:scaleType="fitCenter"
+                        android:padding="5dp"
+                        android:layout_marginEnd="17dp"
+                        android:layout_marginTop="17dp"
+                        />
+                </LinearLayout>
+
+                <!-- GIG SUBJECT TEXT-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/gigSubjectLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="Gig Subject"
+                        android:textColor="#FFFFFF"
+                        android:textSize="34sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <!-- POSTER DATE -->
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rowCount="2"
+                    android:columnCount="2"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Name:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/nameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15sp"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Email:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/emailLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Mobile:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mobileLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Telephone:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/telephoneLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15sp"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Rating:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ratingLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Poster"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+                </GridLayout>
+
+                <!-- GIG DETAILS TEXT-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="24dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="Details"
+                        android:textColor="#FFFFFF"
+                        android:textSize="34sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/gigDetails"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Details Details Details Details Details  Details Details Details Details "
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="24dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="Rewards"
+                        android:textColor="#FFFFFF"
+                        android:textSize="34sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/gigRewards"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="Rewardssss"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="69dp"
+                    >
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="194dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/submitButton"
+                        app:layout_constraintVertical_bias="0.227"
+                        app:srcCompat="@drawable/squiggle" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

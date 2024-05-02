@@ -3,6 +3,8 @@ package models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 import utils.IModel;
 
 public class Rating implements IModel {
@@ -44,6 +46,9 @@ public class Rating implements IModel {
     @Override
     public JSONObject ToJsonObject() throws JSONException {
         JSONObject obj = new JSONObject();
+
+        if (!Objects.equals(this._id, ""))
+            obj.put("_id", this._id);
 
         obj.put("user_id", this.user_id);
         obj.put("rater_id", this.rater_id);

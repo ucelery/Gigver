@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="45dp"
+    android:paddingTop ="45dp"
+    android:paddingBottom ="45dp"
     android:background="#353535"
     android:id="@+id/dialogLayout"
     >

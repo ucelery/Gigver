@@ -1,6 +1,5 @@
 package com.example.gigver.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.gigver.adapter.CustomListViewAdapter;
-import com.example.gigver.PostPreview;
 import com.example.gigver.R;
 
 import java.util.ArrayList;
@@ -73,7 +71,7 @@ public class HomeFeedFragment extends Fragment {
                                             System.out.println(user.GetID() + " == " + clickedPost.GetPosterID());
                                             if (user.GetID().equals(clickedPost.GetPosterID())) {
                                                 // Go to a post view
-                                                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                                                 transaction.replace(R.id.flFragment, new PostPreviewFragment(user, clickedPost));
                                                 transaction.commit();
                                             }

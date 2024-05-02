@@ -7,12 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
-import com.example.gigver.PostPreview;
 import com.example.gigver.R;
 
 import models.Post;
 import models.User;
+import utils.RateDialog;
 
 public class PostPreviewFragment extends Fragment {
     private User poster;
@@ -36,8 +37,23 @@ public class PostPreviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_post_preview, container, false);
 
-        System.out.println("Post Subject: " + post.GetSubject());
-        System.out.println("From User: " + poster.GetName());
+        ImageButton rateButton = (ImageButton) rootView.findViewById(R.id.rateButton);
+        ImageButton completeButton = (ImageButton) rootView.findViewById(R.id.completeButton);
+
+        completeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Server implementation of completing of post
+            }
+        });
+
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RateDialog rate = new RateDialog(requireActivity());
+                rate.ShowDialog(User.currentUser, poster);
+            }
+        });
 
         return rootView;
     }
