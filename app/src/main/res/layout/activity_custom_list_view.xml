@@ -20,7 +20,7 @@
         android:fontFamily="@font/quicksand"
         android:gravity="center_vertical"
         android:text="My Text"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
 
 </LinearLayout>
