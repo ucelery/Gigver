@@ -68,6 +68,8 @@ public class ProfileFragment extends Fragment {
         // Disable Rate Initially
         rateButton.setVisibility(View.GONE);
 
+        InitializeRateButton(rateButton);
+
         if (user != null) {
             // Enable Rating Button for Other users
             if (!user.GetID().equals(User.currentUser.GetID()))
