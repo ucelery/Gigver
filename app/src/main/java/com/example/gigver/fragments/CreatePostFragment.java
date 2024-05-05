@@ -43,7 +43,7 @@ public class CreatePostFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Post newPost = new Post(User.currentUser.GetID(), titleInput.getText().toString(), descriptionInput.getText().toString(), rewardInput.getText().toString());
+                Post newPost = new Post(User.currentUser.GetID(), titleInput.getText().toString(), descriptionInput.getText().toString(), rewardInput.getText().toString(), false);
 
                 ServerManager server = new ServerManager("https://gigver-server.onrender.com");
                 LoadingDialog loadingDialog = new LoadingDialog(getActivity());

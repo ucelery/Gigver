@@ -11,6 +11,7 @@ public class Post implements IModel {
     private String subject;
     private String description;
     private String rewards;
+    private boolean complete;
 
     public Post(JSONObject postObj) throws JSONException {
         if (postObj.getString("_id") == "")
@@ -23,20 +24,22 @@ public class Post implements IModel {
         this.rewards = postObj.getString("rewards");
     }
 
-    public Post(String poster_id, String subject, String description, String rewards) {
+    public Post(String poster_id, String subject, String description, String rewards, boolean complete) {
         this.id = "";
         this.poster_id = poster_id;
         this.subject = subject;
         this.description = description;
         this.rewards = rewards;
+        this.complete = complete;
     }
 
-    public Post(String id, String poster_id, String subject, String description, String rewards) {
+    public Post(String id, String poster_id, String subject, String description, String rewards, boolean complete) {
         this.id = id;
         this.poster_id = poster_id;
         this.subject = subject;
         this.description = description;
         this.rewards = rewards;
+        this.complete = complete;
     }
 
     public String GetID() {
@@ -58,6 +61,8 @@ public class Post implements IModel {
     public String GetRewards() {
         return this.rewards;
     }
+
+    public boolean GetComplete() { return this.complete; }
 
     @Override
     public JSONObject ToJsonObject() throws JSONException {

@@ -1,5 +1,6 @@
 package com.example.gigver.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,12 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gigver.R;
 
 import models.Post;
 import models.User;
+import utils.ConfirmDialog;
+import utils.IServerEvent;
 import utils.RateDialog;
+import utils.ServerManager;
 
 public class PostPreviewFragment extends Fragment {
     private User poster;
@@ -50,14 +55,50 @@ public class PostPreviewFragment extends Fragment {
         details.setText(post.GetDescription());
         gigRewards.setText(post.GetRewards());
 
-        if (User.currentUser.equals(poster.GetID()))
+        if (User.currentUser.GetID().equals(poster.GetID())) {
+            completeButton.setVisibility(View.VISIBLE);
             posterProfile.setVisibility(View.GONE);
-        else completeButton.setVisibility(View.GONE);
+        }
+        else {
+            completeButton.setVisibility(View.GONE);
+            posterProfile.setVisibility(View.VISIBLE);
+        }
+
+
+        ServerManager server = new ServerManager("https://gigver-server.onrender.com");
 
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: Server implementation of completing of post
+                Runnable completeRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        server.CompletePost(post.GetID(), new IServerEvent<String>() {
+                            @Override
+                            public void OnComplete(String result) {
+                                System.out.println("Is this thing working");
+                                MakeToast(requireActivity(), "Post Completed!");
+
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.flFragment, new HomeFeedFragment());
+                                transaction.commit();
+                            }
+
+                            @Override
+                            public void OnFailure(String errorMessage) {
+                                MakeToast(requireActivity(), "Something unexpected happened.");
+
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.flFragment, new HomeFeedFragment());
+                                transaction.commit();
+                            }
+                        });
+                    }
+                };
+
+                ConfirmDialog confirmDialog = new ConfirmDialog(requireActivity(), completeRunnable);
+                confirmDialog.ShowDialog();
             }
         });
 
@@ -72,5 +113,14 @@ public class PostPreviewFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void MakeToast(Activity activity, String message) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -125,7 +125,8 @@ public class ServerManager {
                                 postObject.getString("poster_id"),
                                 postObject.getString("subject"),
                                 postObject.getString("description"),
-                                postObject.getString("rewards")
+                                postObject.getString("rewards"),
+                                postObject.getBoolean("complete")
                         );
 
                         posts.add(newPost);
@@ -160,6 +161,53 @@ public class ServerManager {
                     callback.OnFailure("Failed");
                 } catch (JSONException e) {
                     callback.OnFailure(e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    public void CompletePost(String postId, IServerEvent<String> callback) {
+        String apiUrl = ServerManager.this.hostURL + "/post/complete";
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // URL to which you want to make the request
+                    URL url = new URL(apiUrl);
+
+                    // Open a connection to the URL
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                    // Set the request method to POST
+                    connection.setRequestMethod("POST");
+
+                    // Enable input and output streams
+                    connection.setDoInput(true);
+                    connection.setDoOutput(true);
+
+                    // Write the post_id to the connection output stream
+                    connection.getOutputStream().write(postId.getBytes());
+
+                    // Get the response from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuffer response = new StringBuffer();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+
+                    // Print the response
+                    System.out.println("Response: " + response.toString());
+
+                    // Close the connection
+                    connection.disconnect();
+
+                    callback.OnComplete("Post Completed Successfully");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    callback.OnFailure("Something unexpected happened");
                 }
             }
         }).start();
